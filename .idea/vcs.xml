@@ -2,6 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/COMP66210001/public" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/COMP66210001/themes/PaperMod" vcs="Git" />
   </component>
 </project>
