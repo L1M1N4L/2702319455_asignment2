@@ -3,55 +3,268 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jonathan Leewin - MOGGERS</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Jonathan Leewin - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #64ffda;
+            --bg-dark: #0a192f;
+            --text-light: #ccd6f6;
+            --text-gray: #8892b0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 3px solid var(--primary);
+            margin: 0 auto 2rem;
+            overflow: hidden;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .name {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .contact-links a:hover {
+            color: var(--primary);
+        }
+
+        .section {
+            background: rgba(2, 12, 27, 0.7);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            animation: slideUp 1s ease-out;
+        }
+
+        .section-title {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.5rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .skill-category {
+            background: rgba(100, 255, 218, 0.1);
+            padding: 1rem;
+            border-radius: 5px;
+        }
+
+        .experience-item {
+            margin-bottom: 2rem;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .company {
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .date {
+            color: var(--text-gray);
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: rgba(100, 255, 218, 0.1);
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-title {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .languages {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .language-tag {
+            background: rgba(100, 255, 218, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">MOGGERS</div>
-            <div class="nav-links">
-                <a href="index.html#home">Home</a>
-                <a href="index.html#team">Team</a>
-                <a href="index.html#projects">Projects</a>
-                <a href="index.html#current">Current Project</a>
-            </div>
-        </nav>
-    </header>
-
-    <main>
-        <section class="profile">
-            <div class="profile-header">
+    <div class="container">
+        <header class="profile-header">
+            <div class="profile-image">
                 <img src="Joeu23.jpg" alt="Jonathan Leewin">
-                <h1>Jonathan Leewin</h1>
             </div>
+            <h1 class="name">Jonathan Leewin</h1>
+            <div class="contact-links">
+                <a href="https://www.linkedin.com/in/jonathan-leewin-01a5ab233/"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="tel:+6281117080555"><i class="fas fa-phone"></i> +62 081-1170-8055</a>
+                <a href="mailto:jonathan.leewin@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+                <a href="https://github.com/L1M1N4L"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+        </header>
 
-            <div class="profile-details">
-                <h2>About Me</h2>
-                <p>
-                    Jonathan is a passionate full-stack developer with a strong background in both frontend and backend technologies. 
-                    He has a keen interest in building scalable and efficient web applications. As the team lead, Jonathan ensures 
-                    that the team stays on track and delivers high-quality solutions.
-                </p>
-
-                <h2>Skills</h2>
-                <ul>
-                    <li>JavaScript (React, Node.js)</li>
-                    <li>Python</li>
-                    <li>Database Management (MongoDB, SQL)</li>
-                    <li>DevOps & CI/CD</li>
-                    <li>Project Management</li>
-                </ul>
-
-                <h2>Contact</h2>
-                <p>Email: jonathan.leewin@moggers.dev</p>
-                <p>GitHub: <a href="https://github.com/L1M1N4L" target="_blank">github.com/L1M1N4L </a></p>
-                <p>LinkedIn: <a href="https://linkedin.com/in/jonathan leewin" target="_blank">linkedin.com/in/jonathanleewin</a></p>
+        <section class="section">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>AI & Development</h3>
+                    <p>TensorFlow, PyTorch, Flutter, Visual Studio Code, GitHub</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Design</h3>
+                    <p>Adobe Photoshop, Adobe Premiere, Figma, Tailwind CSS</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Programming</h3>
+                    <p>Python, JavaScript, Java, C++, HTML, CSS, MySQL</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Hardware</h3>
+                    <p>Raspberry Pi, Arduino</p>
+                </div>
+            </div>
+            <div class="languages">
+                <span class="language-tag">English</span>
+                <span class="language-tag">Japanese</span>
+                <span class="language-tag">Indonesian</span>
+                <span class="language-tag">Chinese</span>
             </div>
         </section>
-    </main>
 
-    <footer>
-        <p>&copy; 2025 MOGGERS Development Team</p>
-    </footer>
+        <section class="section">
+            <h2 class="section-title">Experience</h2>
+            <div class="experience-item">
+                <div class="experience-header">
+                    <span class="company">Google For Developers</span>
+                    <span class="date">09/2023 - Current</span>
+                </div>
+                <p>Organiser, Empowering aspiring developers by spreading awareness of Google technologies and fostering their adoption.</p>
+            </div>
+            <div class="experience-item">
+                <div class="experience-header">
+                    <span class="company">Binus University</span>
+                    <span class="date">08/2024 - Current</span>
+                </div>
+                <p>Teaching Assistant collaborating with lecturer Jude Joseph Lamug Martinez, MCS, developing modules and leading lab sessions.</p>
+            </div>
+            <div class="experience-item">
+                <div class="experience-header">
+                    <span class="company">TransTel Communications</span>
+                    <span class="date">06/2023 - Current</span>
+                </div>
+                <p>Freelance Software Engineer specializing in graphic design and web development.</p>
+            </div>
+        </section>
+
+
+        <section class="section">
+            <h2 class="section-title">Education</h2>
+            <div class="experience-item">
+                <div class="experience-header">
+                    <span class="company">Nottingham University</span>
+                    <span class="date">07/2023 - 07/2027</span>
+                </div>
+                <p>Bachelor of Science in Computer Science with specialization in Artificial Intelligence</p>
+            </div>
+            <div class="experience-item">
+                <div class="experience-header">
+                    <span class="company">Binus International University</span>
+                    <span class="date">07/2023 - 07/2027</span>
+                </div>
+                <p>Sarjana Komputer in Computer Science</p>
+            </div>
+        </section>
+    </div>
 </body>
+</html>

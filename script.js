@@ -1,125 +1,147 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
+// Navigation Animation
+document.querySelectorAll('.nav-item').forEach(item => {
+    gsap.from(item, {
+        duration: 0.6,
+        opacity: 0,
+        y: -20,
+        stagger: 0.2,
+        ease: "power2.out",
+        scrollTrigger: {
+            trigger: item,
+            start: "top center",
+            end: "bottom center",
+        }
     });
+});
 
-    // Rating system for team members
-    const teamMembers = document.querySelectorAll('.team-member');
-    
-    teamMembers.forEach(member => {
-        const stars = member.querySelectorAll('.star');
-        let rating = parseInt(member.dataset.rating);
+// Dynamic Star Rating System
+class StarRating {
+    constructor(container) {
+        this.container = container;
+        this.rating = 0;
+        this.maxStars = 5;
+        this.init();
+    }
 
-        // Initialize stars
-        updateStars(stars, rating);
-
-        stars.forEach(star => {
+    init() {
+        // Create stars
+        for (let i = 1; i <= this.maxStars; i++) {
+            const star = document.createElement('span');
+            star.innerHTML = '★';
+            star.className = 'star';
+            star.dataset.value = i;
+            
             // Hover effect
-            star.addEventListener('mouseover', () => {
-                const value = parseInt(star.dataset.value);
-                updateStars(stars, value);
-            });
-
-            // Mouse leave - reset to actual rating
-            star.addEventListener('mouseleave', () => {
-                updateStars(stars, rating);
-            });
-
-            // Click to set rating
-            star.addEventListener('click', () => {
-                rating = parseInt(star.dataset.value);
-                member.dataset.rating = rating;
-                updateStars(stars, rating);
-                
-                // Add animation
-                star.style.transform = 'scale(1.2)';
-                setTimeout(() => {
-                    star.style.transform = 'scale(1)';
-                }, 200);
-
-                // Show thank you message
-                const ratingDiv = member.querySelector('.rating');
-                const originalText = ratingDiv.innerHTML;
-                ratingDiv.innerHTML = '<p>Thank you for your rating!</p>';
-                
-                // Reset after 2 seconds
-                setTimeout(() => {
-                    ratingDiv.innerHTML = originalText;
-                    updateStars(stars, rating);}, 2000);
-                });
-            });
-        });
-    
-        // Function to update star display
-        function updateStars(stars, value) {
-            stars.forEach(star => {
-                const starValue = parseInt(star.dataset.value);
-                if (starValue <= value) {
-                    star.classList.add('active');
-                    star.innerHTML = '★'; // Filled star
-                } else {
-                    star.classList.remove('active');
-                    star.innerHTML = '☆'; // Empty star
-                }
-            });
-        }
-    
-        // Form validation
-        const contactForm = document.querySelector('#contact-form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                
-                const name = document.querySelector('#name').value;
-                const email = document.querySelector('#email').value;
-                const message = document.querySelector('#message').value;
-                
-                if (!name || !email || !message) {
-                    showError('Please fill in all fields');
-                    return;
-                }
-    
-                if (!isValidEmail(email)) {
-                    showError('Please enter a valid email address');
-                    return;
-                }
-    
-                // Simulate form submission
-                const submitButton = contactForm.querySelector('button[type="submit"]');
-                submitButton.disabled = true;
-                submitButton.innerHTML = 'Sending...';
-    
-                setTimeout(() => {
-                    submitButton.innerHTML = 'Message Sent!';
-                    contactForm.reset();
-                    setTimeout(() => {
-                        submitButton.disabled = false;
-                        submitButton.innerHTML = 'Send Message';
-                    }, 2000);
-                }, 1500);
-            });
-        }
-    
-        function showError(message) {
-            const errorDiv = document.createElement('div');
-            errorDiv.className = 'error-message';
-            errorDiv.textContent = message;
+            star.addEventListener('mouseover', () => this.highlight(i));
+            star.addEventListener('mouseout', () => this.highlight(this.rating));
+            star.addEventListener('click', () => this.setRating(i));
             
-            contactForm.insertBefore(errorDiv, contactForm.firstChild);
-            
-            setTimeout(() => {
-                errorDiv.remove();
-            }, 3000);
+            this.container.appendChild(star);
         }
-    
-        function isValidEmail(email) {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return emailRegex.test(email);
+    }
+
+    highlight(rating) {
+        const stars = this.container.children;
+        for (let i = 0; i < stars.length; i++) {
+            stars[i].style.color = i < rating ? '#ffd700' : '#ccd6f6';
+        }
+    }
+
+    setRating(rating) {
+        this.rating = rating;
+        this.highlight(rating);
+        
+        // Animate selected stars
+        const stars = this.container.children;
+        for (let i = 0; i < rating; i++) {
+            gsap.from(stars[i], {
+                scale: 1.5,
+                duration: 0.2,
+                ease: "bounce.out"
+            });
+        }
+
+        // Save rating (could be connected to backend)
+        localStorage.setItem(`project-rating-${this.container.id}`, rating);
+    }
+}
+
+// Initialize ratings
+document.querySelectorAll('.project-rating').forEach((container, index) => {
+    new StarRating(container);
+});
+
+// Scroll Animation
+gsap.registerPlugin(ScrollTrigger);
+
+// Animate sections on scroll
+const sections = document.querySelectorAll('section');
+sections.forEach(section => {
+    gsap.from(section, {
+        opacity: 0,
+        y: 50,
+        duration: 1,
+        scrollTrigger: {
+            trigger: section,
+            start: "top center+=100",
+            end: "bottom center",
+            toggleActions: "play none none reverse"
         }
     });
+});
+
+// Animate project cards
+const projectCards = document.querySelectorAll('.project-card');
+projectCards.forEach((card, index) => {
+    gsap.from(card, {
+        opacity: 0,
+        x: index % 2 === 0 ? -50 : 50,
+        duration: 0.8,
+        scrollTrigger: {
+            trigger: card,
+            start: "top center+=100",
+            end: "bottom center",
+            toggleActions: "play none none reverse"
+        }
+    });
+});
+
+// Team member profile modal
+function showProfile(memberId) {
+    // Redirect to profilejonathan.html with memberId as a query parameter
+    window.location.href = `profilejonathan.html?memberId=${memberId}`;
+}
+
+
+// Mobile menu toggle
+const mobileMenuButton = document.createElement('button');
+mobileMenuButton.className = 'mobile-menu-button';
+mobileMenuButton.innerHTML = '<i class="fas fa-bars"></i>';
+document.querySelector('.navbar').appendChild(mobileMenuButton);
+
+mobileMenuButton.addEventListener('click', () => {
+    const navMenu = document.querySelector('.nav-menu');
+    navMenu.classList.toggle('active');
+});
+
+// Smooth scroll for navigation
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    });
+});
+
+// Initialize animations on load
+window.addEventListener('load', () => {
+    gsap.from('.hero-content', {
+        opacity: 0,
+        y: 50,
+        duration: 1,
+        ease: "power2.out"
+    });
+});

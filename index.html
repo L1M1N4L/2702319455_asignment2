@@ -3,163 +3,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MOGGERS</title>
+    <title>MOGGERS Development Team</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">MOGGERS</div>
-            <div class="nav-links">
-                <a href="#home">Home</a>
-                <a href="#team">Team</a>
-                <a href="#projects">Projects</a>
-                <a href="#current">Current Project</a>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-brand">MOGGERS Team</div>
+        <div class="nav-menu">
+            <a href="#home" class="nav-item">Home</a>
+            <a href="#team" class="nav-item">Team</a>
+            <a href="#projects" class="nav-item">Projects</a>
+            <a href="#current" class="nav-item">Current Work</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="glitch" data-text="Welcome to MOGGERS">Welcome to MOGGERS</h1>
+            <p class="hero-subtitle">Innovating the Future of Technology</p>
+            <div class="hero-cta">
+                <button class="cta-button" onclick="location.href='#projects'">View Our Work</button>
             </div>
-        </nav>
-    </header>
+        </div>
+    </section>
 
-    <main>
-        <section id="home" class="hero">
-            <h1>Welcome to MOGGERS Development</h1>
-            <p>Innovative Solutions for Modern Challenges</p>
-        </section>
-
-        <section id="team" class="team">
-            <h2>Our Team</h2>
-            <div class="team-grid">
-                <a href="profilejonathan.html">
-                    <div class="team-member" data-rating="0">
+    <!-- Team Section -->
+    <section id="team" class="team-section">
+        <h2 class="section-title">Our Team</h2>
+        <div class="team-grid">
+            <div class="team-member" onclick="showProfile('jonathan')">
+                <div class="member-image">
                     <img src="Joeu23.jpg" alt="Jonathan">
-                    <h3>Jonathan Leewin</h3>
-                    <p>Student ID: 2702319455</p>
-                    <div class="rating">
-                        <p>Rate this member:</p>
-                        <div class="stars">
-                            <span class="star" data-value="1">★</span>
-                            <span class="star" data-value="2">★</span>
-                            <span class="star" data-value="3">★</span>
-                            <span class="star" data-value="4">★</span>
-                            <span class="star" data-value="5">★</span>
-                        </div>
-                    </div>
                 </div>
-            </a>
-                <div class="team-member" data-rating="0">
+                <h3>Jonathan Leewin</h3>
+                <p>2702319455</p>
+                <div class="member-social">
+                    <i class="fab fa-github"></i>
+                    <i class="fab fa-linkedin"></i>
+                </div>
+            </div>
+            <div class="team-member" >
+                <div class="member-image">
                     <img src="adrian23.png" alt="Adrian">
-                    <h3>Adrian Basuki</h3>
-                    <p>Student ID: 2702298210</p>
-                    <div class="rating">
-                        <p>Rate this member:</p>
-                        <div class="stars">
-                            <span class="star" data-value="1">★</span>
-                            <span class="star" data-value="2">★</span>
-                            <span class="star" data-value="3">★</span>
-                            <span class="star" data-value="4">★</span>
-                            <span class="star" data-value="5">★</span>
-                        </div>
-                    </div>
                 </div>
-                <div class="team-member" data-rating="0">
+                <h3>Adrian Basuki</h3>
+                <p>2702298210</p>
+                <div class="member-social">
+                    <i class="fab fa-github"></i>
+                    <i class="fab fa-linkedin"></i>
+                </div>
+            </div>
+            <div class="team-member" >
+                <div class="member-image">
                     <img src="Justin.jpg" alt="Justin">
-                    <h3>Justin Hadinata</h3>
-                    <p>Student ID: 2702298236</p>
-                    <div class="rating">
-                        <p>Rate this member:</p>
-                        <div class="stars">
-                            <span class="star" data-value="1">★</span>
-                            <span class="star" data-value="2">★</span>
-                            <span class="star" data-value="3">★</span>
-                            <span class="star" data-value="4">★</span>
-                            <span class="star" data-value="5">★</span>
-                        </div>
-                    </div>
                 </div>
-                <div class="team-member" data-rating="0">
+                <h3>Justin Hadinata</h3>
+                <p>2702298236</p>
+                <div class="member-social">
+                    <i class="fab fa-github"></i>
+                    <i class="fab fa-linkedin"></i>
+                </div>
+            </div>
+            <div class="team-member">
+                <div class="member-image">
                     <img src="sadasda.png" alt="Gabriel">
-                    <h3>Gabriel Anderson</h3>
-                    <p>Student ID: 2702256315</p>
-                    <div class="rating">
-                        <p>Rate this member:</p>
-                        <div class="stars">
-                            <span class="star" data-value="1">★</span>
-                            <span class="star" data-value="2">★</span>
-                            <span class="star" data-value="3">★</span>
-                            <span class="star" data-value="4">★</span>
-                            <span class="star" data-value="5">★</span>
-                        </div>
-                    </div>
+                </div>
+                <h3>Gabriel Anderson</h3>
+                <p>2702256315</p>
+                <div class="member-social">
+                    <i class="fab fa-github"></i>
+                    <i class="fab fa-linkedin"></i>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="projects" class="projects">
-            <h2>Previous Projects</h2>
-            <div class="project-grid">
-                <div class="project-card">
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
+        <h2 class="section-title">Our Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <i class="fas fa-code project-icon"></i>
                     <h3>LOKS Compiler</h3>
-                    <p>A custom compiler implementation with advanced features</p>
-                    <a href="https://github.com/L1M1N4L/LOKS" class="github-link">View on GitHub</a>
                 </div>
-                <div class="project-card">
+                <p>A sophisticated compiler implementation with advanced features</p>
+                <div class="project-rating" data-rating="0"></div>
+                <a href="https://github.com/L1M1N4L/LOKS" class="project-link">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+            </div>
+            <div class="project-card">
+                <div class="project-header">
+                    <i class="fas fa-language project-icon"></i>
                     <h3>Onigiri</h3>
-                    <p>Interactive web application for learning Japanese language</p>
-                    <a href="https://github.com/L1M1N4L/Onigiri-Project" class="github-link">View on GitHub</a>
                 </div>
-                <div class="project-card">
+                <p>Interactive Japanese learning web application</p>
+                <div class="project-rating" data-rating="0"></div>
+                <a href="https://l1m1n4l.github.io/Onigiri-Project/" class="project-link">
+                    <i class="fas fa-external-link-alt"></i> View Project
+                </a>
+            </div>
+            <div class="project-card">
+                <div class="project-header">
+                    <i class="fas fa-terminal project-icon"></i>
                     <h3>Hyper Terminal</h3>
-                    <p>Advanced terminal for serial and TCP/IP communication</p>
-                    <a href="https://github.com/L1M1N4L/BILLINGAPP" class="github-link">View on GitHub</a>
                 </div>
+                <p>Advanced Serial and TCP/IP communication terminal</p>
+                <div class="project-rating" data-rating="0"></div>
+                <a href="https://github.com/L1M1N4L/BILLINGAPP" class="project-link">
+                    <i class="fas fa-external-link-alt"></i> Learn More
+                </a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="current" class="current-project">
-            <h2>Current Project: Help Desk Ticketing System</h2>
-            <div class="project-info">
-                <h3>Technology Stack</h3>
-                <div class="tech-stack">
-                    <span>MongoDB</span>
-                    <span>Express.js</span>
-                    <span>React</span>
-                    <span>Node.js</span>
-                </div>
-                
-                <h3>Key Features</h3>
-                <div class="features">
-                    <div class="feature-group">
-                        <h4>Admin Features</h4>
-                        <ul>
-                            <li>User Account Management</li>
-                            <li>Role Assignment</li>
-                            <li>System Overview</li>
-                        </ul>
-                    </div>
-                    <div class="feature-group">
-                        <h4>User Features</h4>
-                        <ul>
-                            <li>Ticket Submission</li>
-                            <li>Status Tracking</li>
-                            <li>Notification System</li>
-                        </ul>
-                    </div>
-                    <div class="feature-group">
-                        <h4>Agent Features</h4>
-                        <ul>
-                            <li>Ticket Management</li>
-                            <li>Status Updates</li>
-                            <li>Communication Tools</li>
-                        </ul>
-                    </div>
-                </div>
+  <!-- Current Project Section -->
+<section id="current" class="current-section">
+
+    <div class="current-project-container">
+        <div class="project-intro">
+            <h3>Help Desk Ticketing System</h3>
+            <p>A comprehensive MERN Stack solution for Semesta Medika, streamlining customer support operations and medicine delivery tracking through an intuitive interface.</p>
+            <div class="tech-stack">
+                <span class="tech-badge">MongoDB</span>
+                <span class="tech-badge">Express.js</span>
+                <span class="tech-badge">React</span>
+                <span class="tech-badge">Node.js</span>
+                <span class="tech-badge">Tailwind CSS</span>
             </div>
-        </section>
-    </main>
+        </div>
 
-    <footer>
-        <p>&copy; 2025 MOGGERS Development Team</p>
-    </footer>
+        <div class="project-showcase">
+            <div class="mockup-container">
+                <div class="mockup-overlay"></div>
+                <img src="/api/placeholder/600/400" alt="Dashboard Mockup" class="mockup-image">
+            </div>
+            <div class="mockup-container">
+                <div class="mockup-overlay"></div>
+                <img src="/api/placeholder/600/400" alt="Ticket Management Interface" class="mockup-image">
+            </div>
+        </div>
 
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-user-shield"></i>
+                </div>
+                <h4>Admin Dashboard</h4>
+                <ul>
+                    <li>User account management</li>
+                    <li>Role-based access control</li>
+                    <li>System performance monitoring</li>
+                    <li>Analytics and reporting tools</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h4>Customer Portal</h4>
+                <ul>
+                    <li>Intuitive ticket submission</li>
+                    <li>Real-time status tracking</li>
+                    <li>Push notifications</li>
+                    <li>Order history integration</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h4>Agent Workspace</h4>
+                <ul>
+                    <li>Smart ticket assignment</li>
+                    <li>Communication dashboard</li>
+                    <li>Knowledge base access</li>
+                    <li>Performance metrics</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
     <script src="script.js"></script>
 </body>
 </html>
