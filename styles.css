@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Arial', sans-serif;
+    text-decoration: none;
 }
 
 body {
@@ -10,212 +11,113 @@ body {
 }
 
 header {
-    background-color: white;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    padding: 1rem 2rem;
+    background-color: #1a1a1a;
+    color: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
 }
 
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 1rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .logo {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.logo span {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: bold;
-    color: #0056b3;
+    color: #00ff9d;
 }
 
-.nav-buttons button {
-    padding: 0.5rem 1rem;
-    margin-left: 1rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+.nav-links {
+    display: flex;
+    gap: 2rem;
 }
 
-.login-btn {
-    background: none;
-    color: #0056b3;
-}
-
-.signup-btn {
-    background: #0056b3;
+.nav-links a {
     color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #00ff9d;
+}
+
+main {
+    margin-top: 60px;
 }
 
 .hero {
-    background: linear-gradient(135deg, #0056b3, #003366);
+    background: linear-gradient(135deg, #1a1a1a, #333);
     color: white;
     text-align: center;
-    padding: 4rem 2rem;
+    padding: 6rem 2rem;
 }
 
 .hero h1 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     margin-bottom: 1rem;
+    color: #00ff9d;
 }
 
-.search-container {
-    max-width: 600px;
-    margin: 2rem auto;
-    display: flex;
-    gap: 0.5rem;
-}
-
-.search-container input {
-    flex: 1;
-    padding: 1rem;
-    border: none;
-    border-radius: 4px;
-}
-
-.search-container button {
-    padding: 1rem 2rem;
-    background: #0056b3;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.quick-links {
-    margin-top: 2rem;
-}
-
-.quick-links a {
-    color: white;
-    text-decoration: none;
-    margin: 0 1rem;
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
-}
-
-.quick-links a:hover {
-    opacity: 1;
-}
-
-.services {
+.team {
     padding: 4rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
+    
 }
 
-.service-cards {
+.team-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
 }
 
-.card {
+.team-member {
     background: white;
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     text-align: center;
+    color: #1a1a1a;
     transition: transform 0.3s ease;
 }
 
-.card:hover {
+.team-member:hover {
     transform: translateY(-5px);
 }
 
-.card img {
+.team-member img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
     margin-bottom: 1rem;
+    object-fit: cover;
 }
 
-.card h3 {
-    color: #0056b3;
-    margin-bottom: 1rem;
-}
-
-.card button {
-    margin-top: 1rem;
-    padding: 0.5rem 1rem;
-    background: #0056b3;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.faq {
-    padding: 4rem 2rem;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.faq-tabs {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
-}
-
-.tab-btn {
-    padding: 0.5rem 1rem;
-    border: none;
-    background: none;
-    color: #666;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.tab-btn.active {
-    color: #0056b3;
-    border-bottom: 2px solid #0056b3;
-}
-
-.faq-item {
-    margin-bottom: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-.faq-question {
-    padding: 1rem;
-    background: #f9f9f9;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.faq-answer {
-    padding: 1rem;
-    display: none;
-}
-
-.faq-answer.active {
-    display: block;
-}
-
-.faq-feedback {
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid #eee;
-    text-align: center;
-}
-
-.faq-feedback p {
-    color: #666;
+.team-member h3 {
+    color: #1a1a1a;
     margin-bottom: 0.5rem;
 }
 
 .rating {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.stars {
     display: flex;
     justify-content: center;
     gap: 0.5rem;
+    margin-top: 0.5rem;
 }
 
 .star {
@@ -233,10 +135,242 @@ nav {
     color: #ffd700;
 }
 
+.projects {
+    background: #1a1a1a;
+    color: white;
+    padding: 4rem 2rem;
+}
+
+.project-grid {
+    max-width: 1200px;
+    margin: 2rem auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background: #333;
+    padding: 2rem;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-card h3 {
+    color: #00ff9d;
+    margin-bottom: 1rem;
+}
+
+.github-link {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: #00ff9d;
+    color: #1a1a1a;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+.github-link:hover {
+    background: #00cc7d;
+}
+
+.current-project {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tech-stack {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0 2rem 0;
+}
+
+.tech-stack span {
+    background: #1a1a1a;
+    color: #00ff9d;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.feature-group {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.feature-group h4 {
+    color: #1a1a1a;
+    margin-bottom: 1rem;
+}
+
+.feature-group ul {
+    list-style: none;
+}
+
+.feature-group li {
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.feature-group li:before {
+    content: "•";
+    color: #00ff9d;
+    position: absolute;
+    left: 0;
+}
+
 footer {
-    background: #003366;
+    background: #1a1a1a;
     color: white;
     text-align: center;
     padding: 2rem;
     margin-top: 4rem;
 }
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Profile Section */
+.profile {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 30px;
+    background: linear-gradient(135deg, #ffffff, #f5f5f5);
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.profile-header {
+    margin-bottom: 40px;
+}
+
+.profile-header img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.profile-header img:hover {
+    transform: scale(1.05);
+}
+
+.profile-header h1 {
+    font-size: 36px;
+    color: #1a1a1a;
+    margin-top: 15px;
+}
+
+.profile-header p {
+    font-size: 18px;
+    color: #555;
+}
+
+.profile-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.profile-details {
+    text-align: left;
+    width: 100%;
+}
+
+.profile-details h2 {
+    font-size: 26px;
+    color: #1a1a1a;
+    border-bottom: 2px solid #1a1a1a;
+    padding-bottom: 6px;
+    margin-bottom: 20px;
+}
+
+.profile-details p {
+    font-size: 17px;
+    color: #444;
+    line-height: 1.7;
+}
+
+.profile-details ul {
+    list-style: none;
+    padding: 0;
+}
+
+.profile-details ul li {
+    font-size: 16px;
+    color: #1a1a1a;
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.profile-details ul li::before {
+    content: "✔";
+    color: #1a1a1a;
+    position: absolute;
+    left: 0;
+}
+
+.profile-links {
+    margin-top: 20px;
+}
+
+.profile-links a {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    background: #1a1a1a;
+    color: #1a1a1a;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.profile-links a:hover {
+    background: #00cc7d;
+}
+
+@media (max-width: 768px) {
+    .profile {
+        padding: 20px;
+    }
+
+    .profile-header h1 {
+        font-size: 28px;
+    }
+
+    .profile-details h2 {
+        font-size: 22px;
+    }
+
+    .profile-details p {
+        font-size: 15px;
+    }
+}
+
